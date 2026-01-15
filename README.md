@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard UI Recreation
 
-## Getting Started
+This project is a recreation of a Figma dashboard design using Next.js 16, Tailwind CSS, and Chart.js.
 
-First, run the development server:
+## Tech Stack
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS (with custom configuration for colors and fonts)
+- **Charts**: Chart.js + react-chartjs-2
+- **Icons**: Lucide React
+- **Language**: TypeScript
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Structure
+- `app/`: Next.js App Router structure.
+  - `layout.tsx`: Root layout with Sidebar shell.
+  - `page.tsx`: Main dashboard grid assembly.
+- `components/`:
+  - `dashboard/`: Individual widgets (RevenueCard, SocialStats, SalesTeam, etc).
+  - `ui/`: Reusable small UI atoms (Avatar).
+  - `charts/`: Chart.js configurations.
+  - `Sidebar.tsx`, `Header.tsx`: Core layout components.
+- `lib/`:
+  - `mock-data.ts`: Static data to drive the UI.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Assumptions & Decisions
+- **Charts**: Used Chart.js for the complex line chart to demonstrate library usage, but used CSS/HTML for simple bar charts (Referrer chart, Platform bars) to achieve the specific rounded "pill" aesthetic more reliably and performantly.
+- **Responsiveness**: The dashboard is optimized for Desktop (1280px+) as requested, but uses Grid/Flexbox to be fluidly responsive on smaller screens (Tablet).
+- **Icons**: Used Lucide React as a close approximation to the custom icon set in the design.
+- **Micro-interactions**: Added hover states to cards, buttons, and navigation items.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Improvements with more time
+- **Chart Interactivity**: Add real tooltips and hover effects to all charts.
+- **Theme Switcher**: Implement the dark/light mode toggle functionality (UI for it exists in Header).
+- **Data Fetching**: Replace `mock-data.ts` with React Query + API calls.
