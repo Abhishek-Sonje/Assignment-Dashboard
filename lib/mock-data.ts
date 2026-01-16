@@ -1,4 +1,4 @@
-import { LucideIcon, LayoutGrid, Users, Settings, FileText, Home, PieChart } from 'lucide-react';
+import { LucideIcon, LayoutGrid, Users, Settings, FileText, Home, PieChart, Star, RotateCcw } from 'lucide-react';
 
 export interface NavItem {
   label: string;
@@ -10,8 +10,8 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Starred', icon: null, href: '#' },
-  { label: 'Recent', icon: null, href: '#' },
+  { label: 'Starred', icon: Star, href: '#' },
+  { label: 'Recent', icon: RotateCcw, href: '#' },
   { label: 'Sales list', icon: null, href: '#' },
   { label: 'Goals', icon: null, href: '#' },
   { label: 'Dashboard', icon: null, href: '#', active: false },

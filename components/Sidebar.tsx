@@ -1,31 +1,29 @@
 "use client";
 
-import { NAV_ITEMS } from "@/lib/mock-data";
-import Link from "next/link";
-import { clsx } from "clsx";
 import {
   ChevronDown,
-  ChevronRight,
-  Command,
-  Settings,
-  LifeBuoy,
-  Search,
+  ChevronUp,
   Plus,
   Waypoints,
   SquareStack,
   FileText,
   VectorSquare,
   Blend,
-  User,
+  MessageCircle,
+  SettingsIcon,
+  Star,
+  Clock,
+  FolderOpen,
+  BringToFront,
 } from "lucide-react";
 import { useState } from "react";
 
 export default function Sidebar() {
-  // In a real app, this would be determined by the router, but we'll mock it for now based on data
-  // Using open states for sections
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    Codename: true,
+    Dashboard: true,
     Reports: true,
+    SharedWithMe: true,
+    MyReports: true,
   });
 
   const toggleSection = (label: string) => {
@@ -33,156 +31,212 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-64 h-screen bg-[#f2eeed]  overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] flex fixed left-0 top-0 overflow-y-auto z-10 font-sans text-sm pb-8">
-      <div className="flex flex-col items-center pt-6 p-1 pl-4 space-y-4">
-        <div className="flex flex-col items-center justify-between gap-6 h-full">
-          <div className="flex flex-col justify-around flex-1">
-            <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white">
-              <span className="font-medium text-xl">C</span>
-            </div>
-            <div className="space-y-  ">
-              <div className="w-10 h-10 bg-[#fafafa] rounded-4xl flex items-center justify-center">
-                <Waypoints className="w-5 h-5" />
-              </div>
-
-              <div className="w-10 h-10 bg-[#fafafa] rounded-4xl flex items-center justify-center">
-                <SquareStack className="w-5 h-5" />
-              </div>
-
-              <div className="w-10 h-10 bg-[#fafafa] rounded-4xl flex items-center justify-center">
-                <VectorSquare className="w-5 h-5" />
-              </div>
-
-              <div className="w-10 h-10 bg-[#fafafa] rounded-4xl flex items-center justify-center">
-                <Blend className="w-5 h-5" />
-              </div>
-            </div>
-          </div>
-          <div className="flex-1 flex flex-col justify-end gap-6">
-            <User className="w-10 h-10 bg-[#fafafa] rounded-4xl flex items-center justify-center p-2" />
-          </div>
+    <aside className="w-65 h-screen bg-[#f2eeed] fixed left-0 top-0 z-10 font-sans text-sm text-[#4a4a4a] flex flex-col">
+      {/* HEADER - Fixed height */}
+      <div className="flex justify-left items-center px-4 shrink-0">
+        <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white shrink-0">
+          <span className="font-bold text-xl">C</span>
+        </div>
+        <div className="pt-6 px-6 pb-4">
+          <button className="flex items-center gap-1 font-bold text-gray-800 hover:opacity-70 transition-opacity">
+            Codename.com
+            <ChevronDown className="w-4 h-4 mt-0.5" />
+          </button>
         </div>
       </div>
-      <div className="flex flex-col h-full">
-        {/* Brand / Header */}
-        <div className="p-6 justify-center pb-0">
-          <div className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-2">
-            <span className="flex items-center gap-1 justify-center text-sm font-semibold">
-              Codename.com
-              <ChevronDown className="w-3 h-3 text-gray-500" />
-            </span>
+
+      {/* MAIN CONTENT - Flex grow to fill remaining space */}
+      <div className="flex flex-1 min-h-0">
+        {/* LEFT ICON STRIP */}
+        <div className="flex flex-col pt-5 px-3 border-r justify-between border-gray-200/50 pb-6">
+          <div className="flex flex-col gap-4">
+            <NavIcon Icon={Waypoints} />
+            <NavIcon Icon={SquareStack} active />
+            <NavIcon Icon={FileText} />
+            <NavIcon Icon={VectorSquare} />
+            <NavIcon Icon={Blend} />
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <NavIcon Icon={MessageCircle} />
+            <NavIcon Icon={SettingsIcon} />
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 px-4 ">
-          {NAV_ITEMS.map((item, idx) => (
-            <div key={idx} className="mb-1">
-              {!item.subItems ? (
-                <Link
-                  href={item.href}
-                  className={clsx(
-                    "flex items-center px-3 py-2 rounded-lg transition-colors",
-                    item.active
-                      ? "bg-white text-gray-900 font-medium shadow-sm"
-                      : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-                  )}
-                >
-                  {/* Icons would go here if defined in data, limiting for now to text match */}
-                  {item.label === "Dashboard" && (
-                    <span className="mr-2">📊</span>
-                  )}
-                  {item.label}
-                  {item.label === "Dashboard" && (
-                    <Plus className="w-4 h-4 ml-auto text-gray-400" />
-                  )}
-                </Link>
-              ) : (
-                <div>
-                  <button
-                    onClick={() => toggleSection(item.label)}
-                    className="w-full flex items-center justify-between px-3 py-2 text-gray-500 hover:text-gray-900 transition-colors group"
-                  >
-                    <span className="font-medium text-xs uppercase tracking-wider text-gray-400 group-hover:text-gray-600">
-                      {item.label}
-                    </span>
-                    {openSections[item.label] ? (
-                      <ChevronDown className="w-3 h-3" />
-                    ) : (
-                      <ChevronRight className="w-3 h-3" />
-                    )}
-                    {item.label === "Dashboard" && (
-                      <Plus className="w-4 h-4 ml-auto" />
-                    )}
-                  </button>
-
-                  {openSections[item.label] && (
-                    <div className="ml-2 pl-2 space-y-0.5 border-l border-gray-200 my-1">
-                      {item.subItems.map((sub, sIdx) => (
-                        <Link
-                          key={sIdx}
-                          href={sub.href}
-                          className={clsx(
-                            "flex items-center justify-between px-3 py-1.5 rounded-md text-sm transition-colors relative",
-                            sub.active
-                              ? "text-[#e11d48] font-medium bg-red-50/50"
-                              : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
-                          )}
-                        >
-                          <span className="relative z-10">{sub.label}</span>
-                          {/* Badge simulation */}
-                          {sub.label === "Cloudz3r" && (
-                            <span className="bg-[#e11d48] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full z-10">
-                              2
-                            </span>
-                          )}
-                          {sub.label === "Analytics" && (
-                            <span className="bg-[#e11d48] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full z-10">
-                              7
-                            </span>
-                          )}
-                          {/* Pink indicator pill for active report item */}
-                          {sub.active && sub.label === "New report" && (
-                            <span className="absolute left-0 w-0.5 h-full bg-[#e11d48] rounded-r-full -ml-[9px]"></span>
-                          )}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-
-          <div className="pt-6 mt-6 border-t border-gray-100">
-            <Link
-              href="#"
-              className="flex items-center px-3 py-2 text-gray-500 hover:text-gray-900 rounded-lg"
-            >
-              <LifeBuoy className="w-4 h-4 mr-3" />
-              <span>Help & Support</span>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center px-3 py-2 text-gray-500 hover:text-gray-900 rounded-lg"
-            >
-              <Settings className="w-4 h-4 mr-3" />
-              <span>Settings</span>
-            </Link>
+        {/* RIGHT CONTENT PANEL */}
+        <div className="flex-1 flex flex-col pt-5 px-3 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          {/* Top Links */}
+          <div className="px-3 space-y-2.5 mb-2">
+            <button className="flex items-center gap-2 text-gray-500 hover:text-black">
+              <Star className="w-4 h-4" />
+              <span className="text-[13px]">Starred</span>
+            </button>
+            <button className="flex items-center gap-2 text-gray-500 hover:text-black">
+              <Clock className="w-4 h-4" />
+              <span className="text-[13px]">Recent</span>
+            </button>
           </div>
-        </nav>
 
-        {/* Bottom User Profile mockup */}
-        <div className="p-4 mt-auto">
-          {/* Could put a user card here if needed, design shows icons at bottom left */}
-          <div className="flex flex-col gap-4 pl-3">
-            <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-xs ring-4 ring-pink-100">
-              TB
+          <nav className="px-3 flex-1">
+            <div className="space-y-2">
+              <p className="font-semibold text-gray-800">Sales list</p>
+              <p className="font-semibold text-gray-800">Goals</p>
+
+              {/* DASHBOARD SECTION */}
+              <div>
+                <div
+                  className="flex items-center justify-between group cursor-pointer"
+                  onClick={() => toggleSection("Dashboard")}
+                >
+                  <span className="font-bold text-gray-800">Dashboard</span>
+                  <Plus className="w-4 h-4 text-gray-400 group-hover:text-gray-600 bg-white rounded-xl p-0.5" />
+                </div>
+
+                {openSections.Dashboard && (
+                  <div className="mt-2 ml-1 border-l border-gray-300 relative">
+                    <TreeItem label="Codename" />
+
+                    {/* Nested "Shared with me" */}
+                    <div className="relative">
+                      <TreeItem
+                        label="Shared with me"
+                        isParent
+                        isOpen={openSections.SharedWithMe}
+                        onClick={() => toggleSection("SharedWithMe")}
+                      />
+                      {openSections.SharedWithMe && (
+                        <div className="ml-4 border-l border-gray-300">
+                          <TreeItem label="Cargo2go" />
+                          <TreeItem label="Cloudz3r" badge={2} />
+                          <TreeItem label="Idioma" />
+                          <TreeItem label="Syllables" />
+                          <TreeItem label="x-0b" />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* REPORTS SECTION */}
+              <div>
+                <div
+                  className="flex items-center justify-between group cursor-pointer"
+                  onClick={() => toggleSection("Reports")}
+                >
+                  <span className="font-bold text-gray-800">Reports</span>
+                  <Plus className="w-4 h-4 text-gray-400 group-hover:text-gray-600" />
+                </div>
+
+                {openSections.Reports && (
+                  <div className="mt-2 ml-1 border-l border-gray-300">
+                    {/* Share with me */}
+                    <TreeItem
+                      label="Share with me"
+                      isParent
+                      isOpen={openSections.SharedWithMe}
+                      onClick={() => toggleSection("SharedWithMe")}
+                    />
+                    {openSections.SharedWithMe && (
+                      <div className="ml-4 border-l border-gray-300">
+                        <TreeItem label="Deals by user" />
+                        <TreeItem label="Deal duration" />
+                      </div>
+                    )}
+
+                    {/* My reports */}
+                    <TreeItem
+                      label="My reports"
+                      isParent
+                      isOpen={openSections.MyReports}
+                      onClick={() => toggleSection("MyReports")}
+                    />
+                    {openSections.MyReports && (
+                      <div className="ml-4 border-l border-gray-300">
+                        <TreeItem label="Emails received" />
+                        <TreeItem label="Deal duration" />
+                        <TreeItem label="New report" isHighlight />
+                        <TreeItem label="Analytics" badge={7} />
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-            <Settings className="w-5 h-5 text-gray-400" />
+          </nav>
+
+          {/* Footer */}
+          <div className="p-6 shrink-0 flex-1">
+            <button className="flex items-center gap-2 text-gray-500 hover:text-black text-sm">
+              <BringToFront className="w-4 h-4" />
+              Manage folders
+            </button>
           </div>
         </div>
       </div>
     </aside>
+  );
+}
+
+function NavIcon({ Icon, active = false }: { Icon: any; active?: boolean }) {
+  return (
+    <div
+      className={`w-10 h-10 rounded-2xl flex items-center justify-center transition-colors cursor-pointer ${
+        active
+          ? "bg-pink-600 text-white"
+          : "bg-white text-gray-500 hover:bg-gray-100"
+      }`}
+    >
+      <Icon className="w-5 h-5" />
+    </div>
+  );
+}
+
+function    TreeItem({
+  label,
+  badge,
+  isParent,
+  isOpen,
+  onClick,
+  isHighlight,
+}: {
+  label: string;
+  badge?: number;
+  isParent?: boolean;
+  isOpen?: boolean;
+  onClick?: () => void;
+  isHighlight?: boolean;
+}) {
+  return (
+    <div className="relative flex items-center group py-1" onClick={onClick}>
+      {/* The Horizontal Line Connector */}
+      <div className="absolute left-0 top-1/2 w-3 border-t border-gray-300"></div>
+
+      <div
+        className={`ml-4 flex items-center justify-between w-full cursor-pointer hover:translate-x-0.5 transition-transform`}
+      >
+        <span
+          className={`text-[13px] font-medium ${
+            isHighlight ? "text-pink-600 font-medium" : "text-gray-800"
+          } ${isParent ? "font-semibold text-gray-800" : ""}`}
+        >
+          {label}
+        </span>
+
+        <div className="flex items-center gap-2">
+          {badge && (
+            <span className="bg-pink-600 text-white text-[10px] font-bold px-0.5 py-0.5 rounded-md min-w-[18px] text-center">
+              {badge}
+            </span>
+          )}
+          {isParent &&
+            (isOpen ? (
+              <ChevronUp className="w-3 h-3 text-gray-400" />
+            ) : (
+              <ChevronDown className="w-3 h-3 text-gray-400" />
+            ))}
+        </div>
+      </div>
+    </div>
   );
 }
