@@ -87,39 +87,7 @@ export default function RevenueCard() {
         </div>
       </div>
 
-      {/* Bottom Quick items list */}
-      {/* <div className="mt-8 flex items-center justify-between border-t border-gray-100 pt-4">
-          <div className="flex items-center gap-2">
-              <Avatar src="https://i.pravatar.cc/150?u=5" size="sm" />
-              <span className="font-bold text-sm text-gray-700">$209,633</span>
-          </div>
-           <div className="h-8 w-px bg-gray-100"></div>
-           <div className="text-xs text-gray-400">39.63%</div>
-           
-           <div className="flex items-center gap-2">
-              <Avatar src="https://i.pravatar.cc/150?u=2" size="sm" />
-              <span className="font-bold text-sm text-gray-700">$156,841</span>
-          </div>
-           <div className="h-8 w-px bg-gray-100"></div>
-           <div className="text-xs text-gray-400">29.65%</div>
-
-           <div className="flex items-center gap-2">
-              <Avatar src="https://i.pravatar.cc/150?u=1" size="sm" />
-              <span className="font-bold text-sm text-gray-700">$117,115</span>
-          </div>
-           <div className="h-8 w-px bg-gray-100"></div>
-           <div className="text-xs text-gray-400">22.14%</div>
-
-           <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-bold">C</div>
-              <span className="font-bold text-sm text-gray-700">$45,386</span>
-          </div>
-           <div className="text-xs text-gray-400">8.58%</div>
-           
-           <button className="bg-black text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
-               Details
-           </button>
-       </div> */}
+   
     </div>
   );
 }

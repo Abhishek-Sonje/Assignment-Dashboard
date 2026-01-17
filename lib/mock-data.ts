@@ -83,3 +83,31 @@ export const REVENUE_MONTHLY = {
   winLose: '16% 51/318',
   chartData: [11035, 8901, 14500, 9288, 11000, 7500, 4000] // Mock data points
 };
+
+export const QUICK_LIST_ITEMS = [
+    {
+      id: 1,
+      avatar: "https://i.pravatar.cc/150?u=5",
+      amount: "$209,633",
+      percentage: 39.63,
+    },
+    {
+      id: 2,
+      avatar: "https://i.pravatar.cc/150?u=2",
+      amount: "$156,841",
+      percentage: 29.65,
+    },
+    {
+      id: 3,
+      avatar: "https://i.pravatar.cc/150?u=1",
+      amount: "$117,115",
+      percentage: 22.14,
+    },
+    {
+      id: 4,
+      avatar: null,
+      amount: "$45,386",
+      percentage: 8.58,
+      initial: "C",
+    },
+  ];
