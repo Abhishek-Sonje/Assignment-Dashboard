@@ -13,13 +13,13 @@ export default function DashboardPage() {
   return (
     <main className="flex-1 overflow-y-auto bg-[#f2eeed] relative h-full">
       <Header />
-      <div className="px-8 pb-12 pt-2 max-w-[1600px] bg-[#F3F4F6] rounded-4xl mx-auto">
+      <div className="px-8 pb-12 pt-6 max-w-[1600px] bg-[#F3F4F6] rounded-4xl mx-auto">
         <TopControls />
 
         {/* Main Grid */}
         <div className="flex flex-col gap-6">
           {/* Top Row */}
-          <div className="grid grid-cols-12 gap-6 h-[220px]">
+          <div className="grid grid-cols-12 gap-6 ">
             <RevenueCard />
             <MiniStats />
           </div>
