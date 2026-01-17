@@ -2,7 +2,7 @@
 
 A modern, pixel-perfect dashboard UI built with Next.js and Tailwind CSS.
 
-![Dashboard Preview](screenshot.png)
+[![Dashboard Preview](screenshot.png)](https://drive.google.com/file/d/1UdVFviC-yVH12yA2iQNgIJUDSqwL3HlH/view?pli=1)
 
 ## Tech Stack
 
