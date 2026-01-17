@@ -8,7 +8,7 @@ export default function TopControls() {
       <div className="flex items-center justify-between">
         {/* Left: Add Button & Avatars */}
         <div className="flex items-center gap-4">
-          <button className="w-7 h-7 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-800 transition-colors">
+          <button title="add" className="w-7 h-7 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-800 transition-colors">
             <Plus className="w-5 h-5" />
           </button>
 

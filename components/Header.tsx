@@ -24,10 +24,10 @@ export default function Header() {
       <div className="flex items-center gap-3 ml-4">
         {/* Toggle/Switcher */}
         <div className="flex items-center bg-white rounded-full p-1 shadow-sm">
-          <button className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100">
+          <button title='add' className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100">
             <div className="w-4 h-3 bg-gradient-to-r from-orange-300 to-yellow-300 rounded-sm"></div>
           </button>
-          <button className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100">
+          <button title='add' className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100">
             <div className="w-4 h-1 bg-gray-400 rounded-full"></div>
           </button>
         </div>

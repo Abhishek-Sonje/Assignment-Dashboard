@@ -21,9 +21,9 @@ const ReferrerChartCard = () => {
   };
 
   return (
-    <div className="w-80 bg-[#f0f0f0] rounded-[32px] p-4 font-sans shadow-sm">
+    <div className=" bg-[#f0f0f0] rounded-[32px] p-4 font-sans shadow-sm">
       {/* Top Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-6">
         <div className="flex items-center text-gray-600">
           <BarChart3 size={20} strokeWidth={2.5} />
           <ChevronDown size={16} className="ml-0.5" />
@@ -35,7 +35,7 @@ const ReferrerChartCard = () => {
       </div>
 
       {/* Chart Area */}
-      <div className="flex items-end justify-between h-40 gap-2 mb-6">
+      <div className="flex items-end justify-between h-40 gap-2 mb-2">
         {/* Behance Bar */}
         <div className="relative w-full h-[65%] bg-white rounded-2xl flex flex-col items-center overflow-hidden">
           <div className="w-full h-1/2" style={stripedStyle}></div>
