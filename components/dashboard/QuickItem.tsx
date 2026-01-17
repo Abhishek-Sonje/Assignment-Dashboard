@@ -8,7 +8,7 @@ export default function QuickItem() {
     <div>
       {/* Bottom Quick items list */}
       <div className="flex items-center justify-between border-t border-gray-100 mt-6">
-        <div className="flex items-center flex-1 bg-gray-200 rounded-full px-2 py-1 mx-1 gap-1">
+        <div className="flex items-center flex-1 bg-[#f0f0f0] rounded-full px-2 py-1 mx-1 gap-1">
           {items.map((item) => (
             <div
               key={item.id}

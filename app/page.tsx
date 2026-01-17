@@ -12,9 +12,9 @@ import QuickItem from "@/components/dashboard/QuickItem";
 
 export default function DashboardPage() {
   return (
-    <main className="flex-1 overflow-y-auto bg-[#f2eeed] relative h-full">
+    <main className="flex-1 overflow-y-auto px-3 pb-3 bg-[#f2eeed] relative h-full">
       <Header />
-      <div className="px-8 pb-12 pt-6 max-w-[1600px] bg-[#F3F4F6] rounded-4xl mx-auto">
+      <div className="px-8 pb-12 pt-6  bg-[#Fafafa] rounded-4xl mx-auto">
         <TopControls />
 
         {/* Main Grid */}
