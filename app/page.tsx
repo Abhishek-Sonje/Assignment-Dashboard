@@ -37,7 +37,7 @@ export default function DashboardPage() {
               <ReferrerChartCard />
             </div>
 
-            <div className="col-span-12 md:col-span-6 md:row-span-2">
+            <div className="col-span-12 md:col-span-6 md:row-span-2 h-[580px]">
               <SalesTeamCard />
             </div>
 

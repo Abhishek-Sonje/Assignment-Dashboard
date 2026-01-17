@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { SALES_TEAM } from "@/lib/mock-data";
 import Avatar from "@/components/ui/Avatar";
-import { ChevronUp, ChevronDown, TrendingUp, Instagram, Dribbble } from "lucide-react";
+import { ChevronUp, ChevronDown, TrendingUp, Instagram, Dribbble, Dumbbell, Flame, ThumbsUp } from "lucide-react";
 
 export default function SalesTeamCard() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -12,7 +12,7 @@ export default function SalesTeamCard() {
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 shadow-sm h-full">
+    <div className="bg-white rounded-3xl p-6 shadow-sm h-full overflow-y-auto">
       <div className="grid grid-cols-12 text-xs text-gray-400 font-medium mb-4 px-2">
         <div className="col-span-3">Sales</div>
         <div className="col-span-3">Revenue</div>
@@ -25,7 +25,7 @@ export default function SalesTeamCard() {
         {SALES_TEAM.map((member, idx) => (
           <div key={member.name}>
             {/* Main Row */}
-            <div className="grid grid-cols-12 items-center px-2 py-2 hover:bg-gray-50 shadow-md rounded-xl transition-colors group">
+            <div className="grid grid-cols-12 items-center px-2 py-2 hover:bg-gray-50 shadow-md rounded-xl transition-colors group bg-white">
               <div className="col-span-3 flex items-center gap-3">
                 <Avatar
                   src={`https://i.pravatar.cc/150?u=${idx + 10}`}
@@ -70,22 +70,27 @@ export default function SalesTeamCard() {
               </div>
             </div>
 
-            {/* Expanded Drawer */}
-            {expandedIndex === idx && (
-              <div className="mt-3 bg-gradient-to-br from-pink-50 to-white rounded-2xl p-6 animate-in slide-in-from-top duration-300">
+            {/* Expanded Drawer with smooth animation */}
+            <div 
+              className={`grid transition-all duration-300 ease-in-out ${
+                expandedIndex === idx ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="mt-3 bg-gradient-to-br from-pink-50 to-white rounded-2xl p-6 shadow-lg">
                 {/* Badges */}
                 <div className="flex gap-3 mb-6">
                   <div className="flex items-center gap-1.5 text-xs font-medium text-gray-700">
                     <span>Top sales</span>
-                    <span>💪</span>
+                    <Dumbbell className="w-4 h-4 text-pink-500" />
                   </div>
                   <div className="flex items-center gap-1.5 text-xs font-medium text-gray-700">
                     <span>Sales streak</span>
-                    <span>🔥</span>
+                    <Flame className="w-4 h-4 text-orange-500" />
                   </div>
                   <div className="flex items-center gap-1.5 text-xs font-medium text-gray-700">
                     <span>Top review</span>
-                    <span>👍</span>
+                    <ThumbsUp className="w-4 h-4 text-blue-500" />
                   </div>
                 </div>
 
@@ -259,8 +264,9 @@ export default function SalesTeamCard() {
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>

@@ -58,7 +58,7 @@ const PlatformValueCard = () => {
         {/* LEFT SIDE - Red Summary Panel (Top-Right Rounded) */}
         <div className="w-1/3 bg-[#e11d48] p-6 text-white flex flex-col justify-between rounded-tr-[2.5rem] relative">
           {/* Vertical Label */}
-          <div className="absolute left-4 bottom-10 origin-bottom-left -rotate-90 text-white/30 text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
+          <div className="absolute left-4 bottom-19 origin-bottom-left -rotate-90 text-white/30 text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">
             Average monthly
           </div>
 

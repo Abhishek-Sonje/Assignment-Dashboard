@@ -1,33 +1,50 @@
-# Dashboard UI Recreation
+# Sales Dashboard
 
-This project is a recreation of a Figma dashboard design using Next.js 16, Tailwind CSS, and Chart.js.
+A modern, pixel-perfect dashboard UI built with Next.js and Tailwind CSS.
+
+![Dashboard Preview](screenshot.png)
 
 ## Tech Stack
-- **Framework**: Next.js 16 (App Router)
-- **Styling**: Tailwind CSS (with custom configuration for colors and fonts)
-- **Charts**: Chart.js + react-chartjs-2
-- **Icons**: Lucide React
-- **Language**: TypeScript
+
+- **Next.js 16** - App Router
+- **Tailwind CSS** - Styling
+- **Chart.js** - Data visualization
+- **Lucide React** - Icons
+- **TypeScript** - Type safety
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
 ## Project Structure
-- `app/`: Next.js App Router structure.
-  - `layout.tsx`: Root layout with Sidebar shell.
-  - `page.tsx`: Main dashboard grid assembly.
-- `components/`:
-  - `dashboard/`: Individual widgets (RevenueCard, SocialStats, SalesTeam, etc).
-  - `ui/`: Reusable small UI atoms (Avatar).
-  - `charts/`: Chart.js configurations.
-  - `Sidebar.tsx`, `Header.tsx`: Core layout components.
-- `lib/`:
-  - `mock-data.ts`: Static data to drive the UI.
 
-## Assumptions & Decisions
-- **Charts**: Used Chart.js for the complex line chart to demonstrate library usage, but used CSS/HTML for simple bar charts (Referrer chart, Platform bars) to achieve the specific rounded "pill" aesthetic more reliably and performantly.
-- **Responsiveness**: The dashboard is optimized for Desktop (1280px+) as requested, but uses Grid/Flexbox to be fluidly responsive on smaller screens (Tablet).
-- **Icons**: Used Lucide React as a close approximation to the custom icon set in the design.
-- **Micro-interactions**: Added hover states to cards, buttons, and navigation items.
+```
+├── app/
+│   ├── layout.tsx      # Root layout with sidebar
+│   └── page.tsx        # Dashboard page
+├── components/
+│   ├── dashboard/      # Dashboard cards & widgets
+│   ├── charts/         # Chart components
+│   ├── ui/             # Reusable UI components
+│   ├── Sidebar.tsx     # Navigation sidebar
+│   └── Header.tsx      # Top header
+└── lib/
+    └── mock-data.ts    # Static demo data
+```
 
-## Improvements with more time
-- **Chart Interactivity**: Add real tooltips and hover effects to all charts.
-- **Theme Switcher**: Implement the dark/light mode toggle functionality (UI for it exists in Header).
-- **Data Fetching**: Replace `mock-data.ts` with React Query + API calls.
+## Features
+
+- **Responsive Layout** - CSS Grid-based responsive design
+- **Expandable Drawers** - Smooth animated expand/collapse in Sales Team card
+- **Interactive Sidebar** - Collapsible sections with animations
+- **Modern Charts** - Line charts, bar charts, and donut charts
+- **Polished UI** - Hover effects, transitions, and micro-interactions
+
